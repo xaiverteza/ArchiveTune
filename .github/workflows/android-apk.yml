@@ -1,0 +1,39 @@
+
+name: Build Xaiver's Lair APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Make Gradle executable
+        run: chmod +x gradlew
+
+      - name: Build APK
+        run: ./gradlew :app:assembleGmsMobileUniversalRelease
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: xaivers-lair-apk
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: error
+          
