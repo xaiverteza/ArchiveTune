@@ -64,7 +64,7 @@ android {
     compileSdkMinor = 2
 
     defaultConfig {
-    applicationId = "moe.rukamori.archivetune"
+        applicationId = "com.xaiverslair.archivetune"
         minSdk = 26
         targetSdk = 37
         versionCode = 142
