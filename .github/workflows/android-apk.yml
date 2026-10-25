@@ -30,8 +30,8 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build APK
-        run: ./gradlew :app:assembleGmsMobileUniversalRelease
-
+        run: ./gradlew :app:assembleGmsMobileUniversalDebug
+        
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
